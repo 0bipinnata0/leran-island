@@ -2,9 +2,10 @@ import { build as viteBuild, InlineConfig } from "vite";
 import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from "./constants";
 import pluginReact from "@vitejs/plugin-react";
 import type { RollupOutput } from "rollup";
-import * as path from "path";
-import * as fs from "fs-extra";
-
+import path from "path";
+import fs from "fs-extra";
+import ora from "ora";
+import { pathToFileURL } from "url";
 export async function bundle(root: string) {
   const resolveViteConfig = (isServer: boolean): InlineConfig => ({
     mode: "production",
@@ -36,12 +37,13 @@ export async function bundle(root: string) {
   } catch (e) {
     console.log(e);
   }
+  const spinner = ora();
 }
 export async function build(root: string = process.cwd()) {
   const [clientBundle, serverBundle] = await bundle(root);
   // 引入 ssr 入口模块
   const serverEntryPath = path.join(root, ".temp", "ssr-entry.js");
-  const { render } = require(serverEntryPath);
+  const { render } = await import(pathToFileURL(serverEntryPath).toString());
   await renderPage(render, root, clientBundle);
 }
 
