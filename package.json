@@ -7,7 +7,11 @@
   "scripts": {
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
     "start": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup",
+    "test:init": "vitest run",
+    "test:init-ui": "vitest --ui",
+    "prepare:e2e": "tsx scripts/prepare-e2e.ts",
+    "test:e2e": "playwright test"
   },
   "bin": {
     "island": "bin/island.js"
@@ -23,20 +27,26 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@playwright/test": "^1.30.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.11.19",
     "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
+    "@vitest/ui": "^0.28.4",
     "commitlint": "^17.4.2",
     "eslint": "^8.33.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "execa": "^6.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "rollup": "^3.14.0",
     "tsup": "^6.5.0",
-    "typescript": "^4.9.5"
+    "tsx": "^3.12.3",
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.4"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^3.1.0",
