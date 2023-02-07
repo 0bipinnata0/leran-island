@@ -1,6 +1,7 @@
 import { Plugin } from 'vite';
 import { SiteConfig } from 'shared/types/index';
 import path from 'path';
+import { PACKAGE_ROOT } from '../../node/constants';
 
 const SITE_DATA_ID = 'island:site-data';
 
@@ -35,6 +36,16 @@ export function pluginConfig(
         // 重点: 重启 Dev Server
         await restartServer();
       }
+    },
+    config() {
+      return {
+        root: PACKAGE_ROOT,
+        resolve: {
+          alias: {
+            '@runtime': path.join(PACKAGE_ROOT, 'src', 'runtime', 'index.ts')
+          }
+        }
+      };
     }
   };
 }
