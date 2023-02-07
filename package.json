@@ -6,7 +6,7 @@
   "prepare": "husky install",
   "scripts": {
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
-    "start": "tsup --watch",
+    "dev": "tsup --watch",
     "build": "tsup",
     "test:init": "vitest run",
     "test:init-ui": "vitest --ui",
