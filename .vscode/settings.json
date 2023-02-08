@@ -4,6 +4,7 @@
     "execa",
     "middlewares",
     "pnpx",
+    "rehype",
     "tsup"
   ]
 }
