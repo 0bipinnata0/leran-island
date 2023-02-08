@@ -9,6 +9,7 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "test:init": "vitest run",
+    "test:unit": "vitest run",
     "test:init-ui": "vitest --ui",
     "prepare:e2e": "tsx scripts/prepare-e2e.ts",
     "test:e2e": "playwright test"
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@loadable/component": "^5.15.3",
     "@playwright/test": "^1.30.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.11.19",
@@ -53,6 +55,7 @@
     "cac": "^6.7.14",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
     "ora": "^6.1.2",
     "prettier": "^2.8.3",
